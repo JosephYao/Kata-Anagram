@@ -13,6 +13,11 @@ class TestAnagram extends JUnitSuite {
     assertAnagramsEquals(List("b b"), List("b"), "bb")
     assertAnagramsEquals(List("ab ab"), List("ab"), "abab")
   }
+  
+  @Test def one_word_list_and_another_word_that_double_the_reverse_version_of_this_word {
+    assertAnagramsEquals(List("ba ba"), List("ba"), "abab")
+    assertAnagramsEquals(List("ca ca"), List("ca"), "acac")
+  }
 
   private def assertAnagramsEquals(
       expectedAnagrams: List[String], wordList: List[String], word: String) = {
