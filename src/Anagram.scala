@@ -1,8 +1,5 @@
 class Anagram(val wordList: List[String]) {
 
-  val firstPartOfAnagram = wordList
-  val secondPartOfAnagram = wordList
-  
   def generate(word: String) = generateAssist(word, wordList, wordList) 
   
   def generateAssist(word: String, 
@@ -10,7 +7,7 @@ class Anagram(val wordList: List[String]) {
     (firstPartOfAnagram, secondPartOfAnagram) match {
     case (headOfFirst :: tailOfFirst, headOfSecond :: tailOfSecond) 
       if (headOfFirst.toList ::: headOfSecond.toList).sorted == word.toList.sorted =>
-      List(headOfFirst + " " + headOfSecond)
+      headOfFirst + " " + headOfSecond :: generateAssist(word, firstPartOfAnagram, tailOfSecond) 
     case (headOfFirst :: tailOfFirst, headOfSecond :: tailOfSecond) =>
       generateAssist(word, firstPartOfAnagram, tailOfSecond)
     case _ =>
