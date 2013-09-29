@@ -14,9 +14,17 @@ class TestAnagram extends JUnitSuite {
     assertAnagramsEquals(List("ab ab"), List("ab"), "abab")
   }
   
-  @Test def one_word_list_and_another_word_that_double_the_reverse_version_of_this_word {
+  @Test def one_word_list_and_another_word_that_double_the_reversed_version_of_this_word {
     assertAnagramsEquals(List("ba ba"), List("ba"), "abab")
     assertAnagramsEquals(List("ca ca"), List("ca"), "acac")
+  }
+  
+  @Test def two_word_list_and_another_word_is_their_combination {
+    assertAnagramsEquals(List("a b"), List("a", "b"), "ab")
+  }
+  
+  @Test def three_word_list_and_another_word_is_the_combination_of_first_and_third_word {
+    assertAnagramsEquals(List("a c"), List("a", "b", "c"), "ac")
   }
 
   private def assertAnagramsEquals(
