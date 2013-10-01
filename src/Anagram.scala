@@ -7,9 +7,12 @@ class Anagram(val wordList: List[String]) {
     (firstPartOfAnagram, secondPartOfAnagram) match {
     case (headOfFirst :: tailOfFirst, headOfSecond :: tailOfSecond) 
       if (headOfFirst.toList ::: headOfSecond.toList).sorted == word.toList.sorted =>
-      headOfFirst + " " + headOfSecond :: generateAssist(word, firstPartOfAnagram, tailOfSecond) 
+      headOfFirst + " " + headOfSecond :: 
+      generateAssist(word, firstPartOfAnagram.diff(List(headOfSecond)), tailOfSecond) 
     case (headOfFirst :: tailOfFirst, headOfSecond :: tailOfSecond) =>
       generateAssist(word, firstPartOfAnagram, tailOfSecond)
+    case (headOfFirst :: tailOfFirst, _) =>
+      generateAssist(word, tailOfFirst, wordList)
     case _ =>
       List()
   }
