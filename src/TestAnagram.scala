@@ -13,6 +13,10 @@ class TestAnagram extends JUnitSuite {
     assertAnagramsEquals(List("b b"), List("b"), "bb")
     assertAnagramsEquals(List(), List("a"), "bb")
     assertAnagramsEquals(List("ab ab"), List("ab"), "abab")
+  } 
+  
+  @Test def two_word_list_and_input_is_the_combination_of_them {
+    assertAnagramsEquals(List("a b"), List("a", "b"), "ab")
   }
   
   private def assertAnagramsEquals(expectedAnagram: List[String], 
