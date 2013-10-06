@@ -23,6 +23,10 @@ class TestAnagram extends JUnitSuite {
   @Test def three_word_list_and_input_is_the_combination_of_second_and_third {
     assertAnagramsEquals(List("b c"), List("a", "b", "c"), "bc")
   }
+  
+  @Test def anagram_has_different_character_order_as_input {
+    assertAnagramsEquals(List("a cb"), List("a", "cb"), "abc")
+  }
 
   private def assertAnagramsEquals(expectedAnagram: List[String], 
       wordList: List[String], input: String) = {
