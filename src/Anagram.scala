@@ -7,7 +7,7 @@ class Anagram(val wordList: List[String]) {
     (firstPartOfAnagram, secondPartOfAnagram) match {
     case (headOfFirst :: tailOfFirst, headOfSecond :: tailOfSecond) 
     if isAnagrams(input, headOfFirst, headOfSecond) =>
-      List(headOfFirst + " " + headOfSecond) ::: 
+      (headOfFirst + " " + headOfSecond) +: 
       generateAssist(input, firstPartOfAnagram, tailOfSecond)
     case (headOfFirst :: tailOfFirst, headOfSecond :: tailOfSecond) =>
       generateAssist(input, firstPartOfAnagram, tailOfSecond)
