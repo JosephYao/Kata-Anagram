@@ -7,15 +7,19 @@ class Anagram(val wordList: List[String]) {
     (firstPartOfAnagram, secondPartOfAnagram) match {
     case (headOfFirst :: tailOfFirst, headOfSecond :: tailOfSecond) 
     if isAnagrams(input, headOfFirst, headOfSecond) =>
-      List(headOfFirst + " " + headOfSecond)
+      List(headOfFirst + " " + headOfSecond) ::: 
+      generateAssist(input, firstPartOfAnagram, tailOfSecond)
     case (headOfFirst :: tailOfFirst, headOfSecond :: tailOfSecond) =>
       generateAssist(input, firstPartOfAnagram, tailOfSecond)
     case (headOfFirst :: tailOfFirst, _) =>
-      generateAssist(input, tailOfFirst, wordList)
+      generateAssist(input, tailOfFirst, createSecondPartOfAnagram(headOfFirst))
     case _ =>
       List()
   }
   
   private def isAnagrams(input: String, headOfFirst: String, headOfSecond: String) = 
     (headOfFirst.toList ::: headOfSecond.toList).sorted == input.toList.sorted
+  
+  private def createSecondPartOfAnagram(headOfFirst: String) = 
+    wordList.drop(wordList.indexOf(headOfFirst) + 1)
 }
