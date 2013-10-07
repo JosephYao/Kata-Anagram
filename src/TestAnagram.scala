@@ -27,6 +27,11 @@ class TestAnagram extends JUnitSuite {
   @Test def input_is_one_only_combination_of_any_word_in_the_word_list {
     assertAnagramsEquals(List("b c"), List("a", "b", "c"), "bc") 
   }
+  
+  @Test def more_than_one_anagrams {
+    assertAnagramsEquals(List("a bc", "a cb"), List("a", "bc", "cb"), "abc") 
+    assertAnagramsEquals(List("a bcd", "a cbd", "a dbc"), List("a", "bcd", "cbd", "dbc"), "abcd") 
+  }
 
   private def assertAnagramsEquals(expectedAnagrams: List[String], 
       wordList: List[String], input: String) = {
