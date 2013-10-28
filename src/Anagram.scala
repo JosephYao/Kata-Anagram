@@ -16,9 +16,9 @@ class Anagram (val wordList: List[String]) {
   }
   
   private def isAnagram(input: String, headOfFirst: String, headOfSecond: String) = 
-    (headOfFirst + headOfSecond).sorted.mkString == input.sorted.mkString
+    (headOfFirst + headOfSecond).sorted == input.sorted
   
-  private def createSecondPartOfAnagram(headOfFirst: String) = 
+  private def createSecondPartOfAnagram(headOfFirst: String) =
     wordList.drop(wordList.indexOf(headOfFirst) + 1)
 
 }
