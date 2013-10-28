@@ -18,6 +18,12 @@ class TestAnagram extends JUnitSuite {
   @Test def two_words_list_and_input_is_double_of_any_word_except_the_first {
     assertAnagramsEquals(List("b b"), List("a", "b"), "bb")
     assertAnagramsEquals(List("c c"), List("a", "b", "c"), "cc")
+  } 
+  
+  @Test def more_than_one_words_list_and_input_is_the_combination_of_any_two_words {
+    assertAnagramsEquals(List("a b"), List("a", "b"), "ab")
+    assertAnagramsEquals(List("a c"), List("a", "b", "c"), "ac")
+    assertAnagramsEquals(List("b c"), List("a", "b", "c"), "bc")
   }
   
   private def assertAnagramsEquals(

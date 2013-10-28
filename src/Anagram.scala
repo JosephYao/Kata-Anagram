@@ -1,11 +1,15 @@
 class Anagram (val wordList: List[String]) {
   
-  def generate(input: String, wordList: List[String] = wordList): List[String] = 
-    wordList match {
-    case (head :: tail) if head + head == input =>
-      List(head + " " + head)
-    case (head :: tail) =>
-      generate(input, tail)
+  def generate(input: String, firstPartOfAnagram: List[String] = wordList,
+      secondPartOfAnagram: List[String] = wordList): List[String] = 
+    (firstPartOfAnagram, secondPartOfAnagram) match {
+    case (headOfFirst :: tailOfFirst, headOfSecond :: tailOfSecond) 
+    if headOfFirst + headOfSecond == input =>
+      List(headOfFirst + " " + headOfSecond)
+    case (headOfFirst :: tailOfFirst, headOfSecond :: tailOfSecond) =>
+      generate(input, firstPartOfAnagram, tailOfSecond)
+    case (headOfFirst :: tailOfFirst, _) =>
+      generate(input, tailOfFirst, wordList)
     case _ =>
       List()
   }
