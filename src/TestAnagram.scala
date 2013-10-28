@@ -32,6 +32,10 @@ class TestAnagram extends JUnitSuite {
     assertAnagramsEquals(List("ac bd"), List("ac", "bd"), "abcd")
   }
 
+  @Test def more_than_one_anagrams {
+    assertAnagramsEquals(List("a bc", "a cb"), List("a", "bc", "cb"), "abc")
+    assertAnagramsEquals(List("a bcd", "a cbd", "a dbc"), List("a", "bcd", "cbd", "dbc"), "abcd")
+  } 
   
   private def assertAnagramsEquals(
       expectedAnagrams: List[String], wordList: List[String], input: String) = {
