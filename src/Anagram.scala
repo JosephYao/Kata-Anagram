@@ -5,7 +5,7 @@ class Anagram(val wordList: List[String]){
       return List()
     
     for (word <- wordList)
-	    if (word + word == input)
+	    if ((word + word).sorted == input.sorted)
 	      return List(word +  " " + word)
     
     return List() 

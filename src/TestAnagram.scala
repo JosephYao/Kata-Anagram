@@ -20,6 +20,11 @@ class TestAnagram extends JUnitSuite {
     assertAnagramsEqual(List("c c"), List("a", "b", "c"), "cc")
   }
 
+  @Test def anagram_character_order_is_different_from_words {
+    assertAnagramsEqual(List("ba ba"), List("ba"), "abba")
+    assertAnagramsEqual(List("ba ba"), List("ba"), "abab")
+  }
+
   private def assertAnagramsEqual(expectedAnagrams: List[String], 
       wordList: List[String], input: String) = {
     val generator = new Anagram(wordList)
