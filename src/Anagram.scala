@@ -1,19 +1,12 @@
 class Anagram(val wordList: List[String]) {
 
-  def generate(input: String): List[String] = {
-    if (wordList.isEmpty)
-    	return List()
-    
+  def generate(input: String) = 
     for (firstPartOfAnagram <- wordList; 
-         secondPartOfAnagram <- wordList;
+         secondPartOfAnagram <- wordList.dropWhile(_ != firstPartOfAnagram);
          if isAnagram(firstPartOfAnagram, secondPartOfAnagram, input))
-    	return List(firstPartOfAnagram + " " + secondPartOfAnagram)
-   
-    return List()
-  }
+    yield firstPartOfAnagram + " " + secondPartOfAnagram
   
   private def isAnagram(firstPartOfAnagram: String, secondPartOfAnagram: String,
-      input: String) = {
+      input: String) = 
     (firstPartOfAnagram + secondPartOfAnagram).sorted == input.sorted
-  }
 }
