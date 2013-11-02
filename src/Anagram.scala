@@ -6,9 +6,14 @@ class Anagram(val wordList: List[String]) {
     
     for (firstPartOfAnagram <- wordList; 
          secondPartOfAnagram <- wordList;
-         if (firstPartOfAnagram + secondPartOfAnagram == input))	
+         if isAnagram(firstPartOfAnagram, secondPartOfAnagram, input))
     	return List(firstPartOfAnagram + " " + secondPartOfAnagram)
    
     return List()
+  }
+  
+  private def isAnagram(firstPartOfAnagram: String, secondPartOfAnagram: String,
+      input: String) = {
+    (firstPartOfAnagram + secondPartOfAnagram).sorted == input.sorted
   }
 }
