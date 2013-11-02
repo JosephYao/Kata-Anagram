@@ -15,6 +15,11 @@ class TestAnagram extends JUnitSuite {
     assertAnagramsEqual(List("ab ab"), List("ab"), "abab")
   }
   
+  @Test def more_than_one_word_list_and_input_is_double_of_any_non_first_word {
+    assertAnagramsEqual(List("b b"), List("a", "b"), "bb")
+    assertAnagramsEqual(List("c c"), List("a", "b", "c"), "cc")
+  }
+  
   private def assertAnagramsEqual(expectedAnagrams: List[String], 
       wordList: List[String], input: String) = {
     val generator = new Anagram(wordList)

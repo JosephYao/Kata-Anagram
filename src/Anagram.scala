@@ -4,8 +4,8 @@ class Anagram(val wordList: List[String]) {
     if (wordList.isEmpty)
     	return List()
     
-    if (wordList.head + wordList.head == input)	
-    	return List(wordList.head + " " + wordList.head)
+    for (word <- wordList; if (word + word == input))	
+    	return List(word + " " + word)
    
     return List()
   }
