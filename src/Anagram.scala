@@ -5,7 +5,9 @@ class Anagram (wordList: List[String]) {
     if (wordList.length == 0)
       return List()
 
-    return List("a a")
+    return anagrams
   }
 
+  def anagrams: List[String] =
+    List(List(wordList(0), wordList(0))).map(_.mkString(" "))
 }
