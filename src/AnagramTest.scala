@@ -9,7 +9,7 @@ class AnagramTest {
 
   @Test def one_word_list_and_double_of_this_word {
     assertAnagramEquals(List("a a"), List("a"), "aa")
-    assertAnagramEquals(List("b b"), List("b"), "aa")
+    assertAnagramEquals(List("b b"), List("b"), "bb")
     assertAnagramEquals(List("ab ab"), List("ab"), "abab")
   }
 
