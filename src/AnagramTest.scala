@@ -13,6 +13,10 @@ class AnagramTest {
     assertAnagramEquals(List("ab ab"), List("ab"), "abab")
   }
 
+  @Test def one_word_list_and_no_anagram {
+    assertAnagramEquals(List(), List("a"), "bb")
+  }
+
   def assertAnagramEquals(expectedAnagrams: List[String], wordList: List[String], input: String) {
     val generator = new Anagram(wordList)
     val anagrams = generator.generate(input)
