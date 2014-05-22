@@ -2,14 +2,17 @@ class Anagram (wordList: List[String]) {
 
   def generate(input: String): List[String] =
   {
-    if (wordList.length == 0)
-      return List()
+    if (wordList.length == 1)
+      return anagramStrings(input, anagramCombinations(input))
 
-    return anagramStrings(input)
+    return anagramStrings(input, anagramCombinationsForOtherCases)
   }
 
-  private def anagramStrings(input: String): List[String] =
-    anagramCombinations(input).map(_.mkString(" "))
+  private def anagramCombinationsForOtherCases: List[List[String]] =
+    wordList.combinations(2).toList
+
+  private def anagramStrings(input: String, combinations: List[List[String]]): List[String] =
+    combinations.map(_.mkString(" "))
 
   private def anagramCombinations(input: String): List[List[String]] =
     List(List(wordList(0), wordList(0))).filter(isAnagramCombination(input, _))
