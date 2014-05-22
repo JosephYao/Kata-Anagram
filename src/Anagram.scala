@@ -15,5 +15,5 @@ class Anagram (wordList: List[String]) {
     List(List(wordList(0), wordList(0))).filter(isAnagramCombination(input, _))
 
   private def isAnagramCombination(input: String, candidate: List[String]) =
-    candidate.mkString == input
+    candidate.mkString.sorted == input.sorted
 }
