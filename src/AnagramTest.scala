@@ -9,6 +9,7 @@ class AnagramTest {
 
   @Test def one_character_word_list_and_input_is_double_of_this_character {
     assertAnagramEquals(List("a a"), List("a"), "aa")
+    assertAnagramEquals(List("b b"), List("b"), "bb")
   }
 
   private def assertAnagramEquals(expectedAnagrams: List[String], wordList: List[String], input: String) {
