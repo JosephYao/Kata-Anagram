@@ -4,7 +4,7 @@ class Anagram(wordList: List[String]) {
     if (wordList.isEmpty)
       return List()
 
-    return List(wordList(0) + " " + wordList(0))
+    return List(wordList.head + " " + wordList.head)
   }
 
 }
