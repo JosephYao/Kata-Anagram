@@ -4,7 +4,13 @@ class Anagram(wordList: List[String]) {
     if (wordList.isEmpty)
       return List()
 
-    return List(wordList.head + " " + wordList.head)
+    if (isAnagram(input))
+      return List(wordList.head + " " + wordList.head)
+
+    return List()
   }
+
+  def isAnagram(input: String) =
+    (wordList.head + wordList.head).sorted == input.sorted
 
 }
