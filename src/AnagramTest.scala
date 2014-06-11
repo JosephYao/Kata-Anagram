@@ -29,6 +29,14 @@ class AnagramTest {
     assertAnagramEquals(List(), List("a", "b"), "ac")
   }
 
+  @Test def three_word_list_and_input_has_one_anagram {
+    assertAnagramEquals(List("a b"), List("a", "b", "c"), "ab")
+  }
+
+  @Test def two_word_list_and_input_is_double_of_first_word {
+    assertAnagramEquals(List("a a"), List("a", "b"), "aa")
+  }
+
   private def assertAnagramEquals(expectedAnagrams: List[String], wordList: List[String], input: String) {
     val generator = new Anagram(wordList)
     val anagrams = generator.generate(input)
