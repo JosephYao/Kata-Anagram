@@ -7,7 +7,7 @@ class Anagram(wordList: List[String]) {
     wordCombinations.filter(isAnagram(input, _)).map(_.mkString(" "))
 
   def wordCombinations: List[List[String]] =
-      wordList.combinations(2).toList ::: List(wordList, wordList).transpose
+      List(wordList, wordList).transpose ::: wordList.combinations(2).toList
 
   def isAnagram(input: String, wordCombination: List[String]) =
     wordCombination.mkString.sorted == input.sorted
