@@ -4,10 +4,11 @@ class Anagram(val wordList: List[String]) {
     if (wordList.isEmpty)
       return List()
 
-    if (input == wordList.head + wordList.head)
+    if (isAnagram(input))
       return List(wordList.head + " " + wordList.head)
 
     return List()
   }
 
+  def isAnagram(input: String) = input.sorted == (wordList.head + wordList.head).sorted
 }
