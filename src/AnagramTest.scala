@@ -11,6 +11,8 @@ class AnagramTest extends JUnitSuite {
 
   @Test def one_word_list_and_input_is_double_of_this_word {
     assertAnagramsEquals(List("a a"), "aa", List("a"))
+    assertAnagramsEquals(List("b b"), "bb", List("b"))
+    assertAnagramsEquals(List("ab ab"), "abab", List("ab"))
   }
 
   def assertAnagramsEquals(expectedAnagrams: List[String], input: String, wordList: List[String]) {
