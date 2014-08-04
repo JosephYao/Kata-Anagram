@@ -1,14 +1,20 @@
 class Anagram (wordList : List[String]) {
   def generate(input : String) : List[String] = {
-    if (!wordList.isEmpty && wordList.head + wordList.last == input)
-      return List(wordList.head + " " + wordList.last)
+    if (wordList.length == 1)
+      return generateAnagrams(input, singleWordCandidates)
 
-    if (isAnagram(input))
-      return List(wordList.head + " " + wordList.head)
-
-    return List()
+    return generateAnagrams(input, doubleWordCandidates)
   }
 
-  def isAnagram(input: String) =
-    !wordList.isEmpty && (wordList.head + wordList.head).sorted == input.sorted
+  def generateAnagrams(input: String, anagramCandidates: Iterator[List[String]]) =
+    anagramCandidates.filter(isAnagram(input, _)).map(_.mkString(" ")).toList
+
+  def singleWordCandidates =
+    (wordList ::: wordList).permutations
+
+  def doubleWordCandidates =
+    wordList.combinations(2)
+
+  def isAnagram(input: String, candidates: List[String]) =
+    (candidates.head + candidates.last).sorted == input.sorted
 }
