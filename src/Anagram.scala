@@ -10,7 +10,7 @@ class Anagram (wordList : List[String]) {
     anagramCandidates.filter(isAnagram(input, _)).map(_.mkString(" ")).toList
 
   def singleWordCandidates =
-    (wordList ::: wordList).permutations
+    List(wordList, wordList).transpose.toIterator
 
   def doubleWordCandidates =
     wordList.combinations(2)
