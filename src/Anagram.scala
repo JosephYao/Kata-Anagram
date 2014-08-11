@@ -1,11 +1,15 @@
 class Anagram (wordList: List[String]) {
   def generate(input: String): List[String] = {
-    if (isAnagram(input))
-      return List(wordList.head + " " + wordList.head)
+    if (wordList.isEmpty)
+      return List()
 
-    return List()
+      return generateAnagramList(input)
   }
 
-  def isAnagram(input: String) =
-    !wordList.isEmpty && (wordList.head + wordList.head).sorted == input.sorted
+  def generateAnagramList(input: String) = anagramCandidates.filter(isAnagram(_, input)).map(_.mkString(" "))
+
+  def anagramCandidates = List(wordList, wordList).transpose
+
+  def isAnagram(candidates: List[String], input: String) =
+    (candidates.head + candidates.last).sorted == input.sorted
 }
