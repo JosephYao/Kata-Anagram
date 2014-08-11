@@ -3,7 +3,7 @@ class Anagram (wordList: List[String]) {
     if (wordList.isEmpty)
       return List()
 
-    return List("a a")
+    return List(wordList.head + " " + wordList.head)
   }
 
 }
