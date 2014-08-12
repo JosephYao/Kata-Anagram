@@ -3,7 +3,10 @@ class Anagram (wordList: List[String]) {
     if (wordList.isEmpty)
       return List()
 
-      return generateAnagramList(input)
+    if (wordList.length == 2 && isAnagram(wordList, input))
+      return List(wordList.mkString(" "))
+
+    return generateAnagramList(input)
   }
 
   def generateAnagramList(input: String) = anagramCandidates.filter(isAnagram(_, input)).map(_.mkString(" "))
