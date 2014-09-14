@@ -18,6 +18,10 @@ class AnagramTest extends JUnitSuite {
     assertAnagramsEqual(List(), "bb", List("a"))
   }
 
+  @Test def one_word_list_and_input_contains_double_of_all_characters_but_in_a_different_order {
+    assertAnagramsEqual(List("ab ab"), "aabb", List("ab"))
+  }
+
   def assertAnagramsEqual(expectedAnagrams: List[String], input: String, wordList: List[String]) {
     val generator = new Anagram(wordList)
     val anagrams = generator.generate(input)
