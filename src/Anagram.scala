@@ -1,10 +1,13 @@
 class Anagram (val wordList: List[String]) {
   def generate(input: String) =
-    anagrams(input).map(anagram => anagram + " " + anagram)
+    anagrams(input).map(_.mkString(" "))
 
   def anagrams(input: String) =
-    wordList.filter(isAnagram(input, _))
+    anagramCandidates.filter(isAnagram(input, _))
 
-  def isAnagram(input: String, anagram: String) =
-    (anagram + anagram).sorted == input.sorted
+  def anagramCandidates =
+    List(wordList, wordList).transpose ::: wordList.combinations(2).toList
+
+  def isAnagram(input: String, candidates: List[String]) =
+    candidates.mkString.sorted == input.sorted
 }
