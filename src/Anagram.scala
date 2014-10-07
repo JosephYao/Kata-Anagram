@@ -7,5 +7,5 @@ class Anagram (val wordList: List[String]) {
   }
 
   def isAnagram(input: String) =
-    !wordList.isEmpty && wordList.head + wordList.head == input
+    !wordList.isEmpty && (wordList.head + wordList.head).sorted == input.sorted
 }
