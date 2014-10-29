@@ -1,11 +1,10 @@
 class Anagram (wordList: List[String]) {
-  def generate(input: String): List[String] = {
-    if (isAnagram(input))
-      return List(wordList.head + " " + wordList.head)
+  def generate(input: String) = anagrams(input).mapConserve(output)
 
-    return List()
-  }
+  private def output(anagram: String) = anagram + " " + anagram
 
-  def isAnagram(input: String) =
-    !wordList.isEmpty && (wordList.head + wordList.head).sorted == input.sorted
+  private def anagrams(input: String) = wordList.filter(isAnagram(input, _))
+
+  private def isAnagram(input: String, candidate: String) =
+    (candidate + candidate).sorted == input.sorted
 }
