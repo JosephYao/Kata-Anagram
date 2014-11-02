@@ -4,9 +4,12 @@ class Anagram (wordList: List[String]) {
   private def output(anagrams: List[String]) = anagrams mkString " "
 
   private def anagrams(input: String) =
-    (List(wordList, wordList).transpose ++ wordList.combinations(2)).
-      filter(isAnagram(input, _))
+    (singleAnagramCandidates ++ doubleAnagramCandidates) filter(isAnagram(input, _))
+
+  def doubleAnagramCandidates = wordList.combinations(2)
+
+  def singleAnagramCandidates = List(wordList, wordList).transpose
 
   private def isAnagram(input: String, candidates: List[String]) =
-    (candidates.mkString).sorted == input.sorted
+    candidates.mkString.sorted == input.sorted
 }
