@@ -2,7 +2,7 @@ class Anagram (wordList: List[String]) {
 
   def generate(input: String) = anagrams(input).map(output)
 
-  def anagrams(input: String) = candidates.find(isAnagram(input, _)).toList
+  def anagrams(input: String) = candidates.filter(isAnagram(input, _))
 
   def candidates = List(wordList, wordList).transpose ++ wordList.combinations(2)
 
