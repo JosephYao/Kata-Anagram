@@ -28,8 +28,9 @@ class TestAnagram extends JUnitSuite {
     assertAnagrams(List("a a"), "aa", List("c", "b", "a", "d", "e"))
   }
 
-  @Test def two_word_list_and_input_has_anagram_of_these_two_words {
+  @Test def any_word_list_and_input_only_has_anagram_of_any_two_words {
     assertAnagrams(List("a b"), "ab", List("a", "b"))
+    assertAnagrams(List("a b"), "ab", List("c", "a", "b"))
   }
 
   def assertAnagrams(expectedAnagrams: List[String], input: String, wordList: List[String]) {

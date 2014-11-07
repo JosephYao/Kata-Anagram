@@ -1,15 +1,13 @@
 class Anagram (wordList: List[String]) {
 
-  def generate(input: String): List[String] = {
-    if (wordList.length == 2 && isAnagram(input, wordList.head, wordList(1)))
-      return List(output(wordList.head, wordList(1)))
+  def generate(input: String) = anagrams(input).map(output)
 
-    return wordList.filter(candidate => isAnagram(input, candidate, candidate)).
-      map(anagram => output(anagram, anagram))
-  }
+  def anagrams(input: String) = candidates.find(isAnagram(input, _)).toList
 
-  def output(anagram: String, anotherAnagram: String) = anagram + " " + anotherAnagram
+  def candidates = List(wordList, wordList).transpose ++ wordList.combinations(2)
 
-  def isAnagram(input: String, candidate: String, anotherCandidate: String) =
-    (candidate + anotherCandidate).sorted == input.sorted
+  def output(anagrams: List[String]) = anagrams.mkString(" ")
+
+  def isAnagram(input: String, candidates: List[String]) =
+    candidates.mkString.sorted == input.sorted
 }
