@@ -6,6 +6,6 @@ class Anagram (wordList: List[String]) {
     def isAnagram(candidate: String) =
       (candidate + candidate).sorted == input.sorted
 
-    return wordList.find(isAnagram).toList.map(output)
+    return wordList.filter(isAnagram).map(output)
   }
 }
