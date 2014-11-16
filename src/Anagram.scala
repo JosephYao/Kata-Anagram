@@ -9,6 +9,6 @@ class Anagram (wordList: List[String]) {
     def candidates = List(wordList, wordList).transpose ++
       wordList.combinations(2)
 
-    return candidates.find(isAnagram).toList.map(output)
+    return candidates.filter(isAnagram).map(output)
   }
 }
