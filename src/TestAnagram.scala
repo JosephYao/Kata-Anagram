@@ -37,6 +37,10 @@ class TestAnagram extends JUnitSuite {
     assertAnagrams(List("a bc", "ab c"), "abc", List("a", "bc", "ab", "c"))
   }
 
+  @Test def acceptance_test {
+    assertAnagrams(List("ab ab", "ba ba", "ab ba"), "abba", List("ab", "ba", "abb", "c"))
+  }
+
   def assertAnagrams(expectedAnagrams: List[String], input: String, wordList: List[String]) {
     val generator = new Anagram(wordList)
     val anagrams = generator.generate(input)
